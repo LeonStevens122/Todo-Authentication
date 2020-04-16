@@ -108,11 +108,14 @@ carRoutes.route('/findID/:id').get(function (req, res) {
 // Delete single Car
 carRoutes.route('/deleteOne/').delete((req, res) => {
 
-    console.log('req.body : ', req.body);
-    let delId = req.params.id;
+    console.log('req.body : ', req.body._id);
+    let delId = req.body._id;
+    console.log('red _id : ', delId);
+    try {
+        Car.findOneAndDelete({ _id: delId })
+    } catch (e) { console.log('Error Message try :', e) };
 
-    Car.findOneAndDelete({ _id: delId });
-
+   
     res.send('Car deleted.')
 
 });

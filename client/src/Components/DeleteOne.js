@@ -16,15 +16,25 @@ export function DeleteOne({ carList }) {
   const [_id, setId] = useState();
 
     const handleSubmit = (event) => {
-        const Id = event.target.value;
+        
+        //
+        Axios({
+            method: "DELETE",
+            url: "/cars/deleteOne/",
+            data: {
+                _id: _id
+            },
+        }).catch((error) => { console.log('Axios Error Message : ', error) }).then((res) => {
+            console.log("Car Deleted", res);
+        });
 
-
-        Axios.delete('/cars/deleteOne/', Id)
-            .then(response => response.data)
-            .catch((error) => {
-                throw error.response.data;
-                console.log('Error Response : ', error)
-            })
+        //
+        //Axios.delete('/cars/deleteOne/', Id)
+        //    .then(response => response.data)
+        //    .catch((error) => {
+        //        throw error.response.data;
+        //        console.log('Error Response : ', error)
+        //    })
         
   };
 

@@ -25,6 +25,7 @@ exports.create = function(car) {
     });
 };
 
+
 exports.findAll = function (req, res) {
     Car.find(function (err, car) {
         if (err) {
@@ -53,11 +54,13 @@ exports.updateById = function (carId, newCar) {
 }
 
 exports.deleteCarById = function (req, res) {
+    console.log('req ID  in Controller :', req._id);
+
     Car.findOneAndRemove({ _id: req._id }, function (err) {
         if (err) {
-            console.log("ERROR: Blogs NOT removed. " + err);
-            res.send("ERROR: Blogs NOT removed. " + err);
+            console.log("ERROR: Car NOT removed. " + err);
+            res.send("ERROR: Car NOT removed. " + err);
         }
-        res.send("Blogs removed");
+        res.send("Cars Deleted");
     });
 }
