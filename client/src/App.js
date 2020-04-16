@@ -4,9 +4,9 @@ import "./App.css";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
- 
+  Route
 } from "react-router-dom";
+
 import React, { Component } from "react";
 import { FormAddCars } from "./Components/AddForm";
 import { ShowCars } from "./Components/ListCars";
@@ -18,8 +18,6 @@ import { FormUpdateOne } from './Components/UpdateOne';
 import { DeleteOne } from './Components/DeleteOne';
 import Axios from "axios";
 
-
-
 class App extends Component {
     constructor() {
         super();
@@ -27,17 +25,13 @@ class App extends Component {
             carList: [],
             selectedCar: null
         };
-
     }
 
     componentDidMount() {
-       
         Axios.get("./cars/").then( (result) => {
             const carData = result.data;
             this.setState({ carList: carData });
-                  
         });
-
     }
 
     render() {
@@ -61,7 +55,7 @@ class App extends Component {
                         </Route>
                         <Route path="/Search">
                             <SearchForm />
-                            <ShowCars carList={this.state.carList} />
+                            
                         </Route>
 
                         <Route path="/AddItem">
@@ -80,7 +74,7 @@ class App extends Component {
                         </Route>
 
                         <Route path="/DeleteOne">
-                            <DeleteOne />
+                            <DeleteOne carList={this.state.carList} />
 
                             <ShowCars carList={this.state.carList} />
                         </Route>

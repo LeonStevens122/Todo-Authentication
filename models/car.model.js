@@ -1,28 +1,27 @@
 /* Although MongoDB is schemaless, Mongoose works with schemas.
 Remember, a schema describes what data is in a database and how it is organised and structured.  */
-
 const mongoose = require("mongoose");
 
 const CarSchema = mongoose.Schema({
   model: {
-    type: Number,
-    required: true,
+    type: String,
+    required: false,
   },
   make: {
     type: String,
-    required: true,
+    required: false,
   },
   owner: {
     type: String,
-    required: true,
+    required: false,
   },
   registration: {
     type: String,
-    required: true,
+    required: false,
   },
   address: {
     type: String,
-    required: true,
+    required: false,
   }
 });
 

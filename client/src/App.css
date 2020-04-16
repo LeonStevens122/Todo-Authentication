@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   padding: 10px;
-
 }
 
 .carList {
@@ -29,20 +28,16 @@
 
 .carTable {
     margin: auto;
-
 }
 
 .carTableHeader {
     align-content: center;
     font-size: larger;
     padding: 5px;
-
-
 }
 
 .carTableItem {
     border: 2px, solid, black;
-    
 }
 
 .App-header {

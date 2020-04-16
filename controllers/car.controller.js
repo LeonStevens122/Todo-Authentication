@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 exports.create = function(car) {
     // Create and Save a new car
     console.log(req);
-
     let carModel = new Car({
         model: car.model,
         make: car.make,
@@ -37,16 +36,14 @@ exports.findAll = function (req, res) {
     });
 }
 
+
 exports.updateById = function (carId, newCar) {
 
     let query = { _id: carId };
-
     let update = { ...newCar };
-    console.log('new car to be updated: ', update)
-
-
-
-    Car.findOneAndUpdate(query, { newCar }, { new: true }, function (err, doc) {
+    console.log('new car to be updated : ', update)
+    
+    Car.findByIdAndUpdate(query, { newCar }, { new: true }, function (err, doc) {
         if (err) {
             console.log("Something wrong when updating data! - ", err);
             res.send("ERROR: Not Updated. " + err);
@@ -55,8 +52,8 @@ exports.updateById = function (carId, newCar) {
     });
 }
 
-exports.deleteBlogsByAuthor = function (req, res) {
-    Car.findOneAndRemove({ author: 'Hyperion' }, function (err) {
+exports.deleteCarById = function (req, res) {
+    Car.findOneAndRemove({ _id: req._id }, function (err) {
         if (err) {
             console.log("ERROR: Blogs NOT removed. " + err);
             res.send("ERROR: Blogs NOT removed. " + err);

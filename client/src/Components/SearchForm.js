@@ -1,92 +1,60 @@
 // JavaScript source code
 
-import Form from 'react-bootstrap/Form';
+
 import {  Button, Col } from 'react-bootstrap';
 import React, { useState } from 'react';
+import { Row,  Container } from "react-bootstrap";
 
 export function SearchForm() {
-    const [validated, setValidated] = useState(false);
 
     const [model, setModel] = useState();
     const [make, setMake] = useState();
     const [owner, setOwner] = useState();
     const [registration, setRegistration] = useState();
     const [address, setAddress] = useState();
+    const [carList, setCarList] = useState([]);
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        setValidated(true);
+       
     };
 
     return (
-        <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Form.Row>
-                <Form.Group as={Col} controlId="validationCustom01">
-                    <Form.Label>Model</Form.Label>
-                    <Form.Control
-                        required
-                        type="text"
-                        placeholder="Model"
-                        defaultValue="Model"
-                    />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group as={Col} controlId="validationCustom02">
-                    <Form.Label>Make</Form.Label>
-                    <Form.Control
-                        required
-                        type="text"
-                        placeholder="Make"
-                        defaultValue="Make"
-                    />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                </Form.Group>
 
-                <Form.Group as={Col} controlId="validationCustom02">
-                    <Form.Label>Owner</Form.Label>
-                    <Form.Control
-                        required
-                        type="text"
-                        placeholder="Owner"
-                        defaultValue="Owner"
-                    />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                </Form.Group>
+        <div className="carList">
+            <Button onClick={handleSubmit} className="submitButton">
+                Delete Car
+          </Button>
+             
 
-                <Form.Group as={Col} controlId="validationCustom02">
-                    <Form.Label>Registration</Form.Label>
-                    <Form.Control
-                        required
-                        type="text"
-                        placeholder="Registration"
-                        defaultValue="Registration"
-                    />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                </Form.Group>
-            </Form.Row>
+       
+            <h1> Cars List </h1>
 
-            <Form.Row>
-                <Form.Group as={Col} controlId="validationCustom02">
-                    <Form.Label>Address</Form.Label>
-                    <Form.Control
-                        required
-                        type="text"
-                        placeholder="Address"
-                        defaultValue="Address"
-                    />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                </Form.Group>
-                
-            </Form.Row>
-            <Form.Row>
-                <Button className="submitButton" type="submit">Submit form</Button>
-            </Form.Row>
+            <Container fluid>
+                <Row>
+                    <Col className="carTableHeader">Make</Col>
+                    <Col className="carTableHeader">Model</Col>
+                    <Col className="carTableHeader">Owner</Col>
+                    <Col className="carTableHeader">Registration</Col>
+                    <Col className="carTableHeader">Address</Col>
+                </Row>
+                {carList.map((car, index) => {
 
-        </Form>
+                    return (
+                        <Row key={index} >
+                            <Col className="carTableItem">{car.make}</Col>
+                            <Col className="carTableItem">{car.model}</Col>
+                            <Col className="carTableItem">{car.owner}</Col>
+                            <Col className="carTableItem">{car.registration}</Col>
+                            <Col className="carTableItem">{car.address}</Col>
+                        </Row>
+                    );
+                })}
+            </Container>
+        </div >
+
+            
+        
     );
 }
 

@@ -2,7 +2,7 @@
 
 import Form from "react-bootstrap/Form";
 import { InputGroup, Button, Col } from "react-bootstrap";
-import React, { useState, Component } from "react";
+import React, { useState } from "react";
 const Axios = require("axios");
 
 export function FormAddCars() {
@@ -102,7 +102,7 @@ export function FormAddCars() {
       </Form.Row>
       <Form.Row>
         <Button onClick={handleSubmit} className="submitButton" type="submit">
-          Submit form
+          Submit Form
         </Button>
       </Form.Row>
     </Form>
