@@ -2,6 +2,8 @@
 Remember, a schema describes what data is in a database and how it is organised and structured.  */
 const mongoose = require("mongoose");
 
+
+// Create Car Schema
 const CarSchema = mongoose.Schema({
   model: {
     type: String,
@@ -24,5 +26,5 @@ const CarSchema = mongoose.Schema({
     required: false,
   }
 });
-
+// Export Car Schema
 module.exports = mongoose.model("Car", CarSchema);

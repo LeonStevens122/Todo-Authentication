@@ -3,9 +3,10 @@
 const Car = require('../models/car.model.js');
 const mongoose = require('mongoose');
 
+// Create new Car
 exports.create = function(car) {
     // Create and Save a new car
-    console.log(req);
+
     let carModel = new Car({
         model: car.model,
         make: car.make,
@@ -25,7 +26,7 @@ exports.create = function(car) {
     });
 };
 
-
+// find all cars in Database
 exports.findAll = function (req, res) {
     Car.find(function (err, car) {
         if (err) {
@@ -37,7 +38,7 @@ exports.findAll = function (req, res) {
     });
 }
 
-
+// update Car by ID
 exports.updateById = function (carId, newCar) {
 
     let query = { _id: carId };
@@ -53,6 +54,8 @@ exports.updateById = function (carId, newCar) {
     });
 }
 
+
+// Delete Specific car by ID
 exports.deleteCarById = function (req, res) {
     console.log('req ID  in Controller :', req._id);
 
